@@ -1,5 +1,5 @@
 class Stack {
-  items: any[];
+  private items: any[];
 
   constructor() {
     this.items = [];
