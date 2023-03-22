@@ -1,19 +1,19 @@
-import {defaultEquals} from '../utils';
+import {defaultEquals} from '../utils/index';
 import Node from './Node';
 
-class LinkList {
+class LinkList<T = number> {
   private count: number;
-  public head: undefined | null | Node;
-  private equalsFn: typeof defaultEquals;
+  public head: undefined | null | Node<T>;
+  equalsFn: typeof defaultEquals;
   constructor(equalsFn = defaultEquals) {
     this.count = 0;
     this.head = undefined;
     this.equalsFn = equalsFn;
   }
 
-  public push(element: any): void {
+  public push(element: T): void {
     const node = new Node(element);
-    let current: Node;
+    let current: Node<T>;
     // 如果链表为空设置头节点
     if(this.head == null) {
       this.head = node;
@@ -29,10 +29,10 @@ class LinkList {
     this.count++;
   }
 
-  public removeAt(index: number): Node | undefined {
+  public removeAt(index: number): Node<T> | undefined {
     // 检查是否越界
     if(index >= 0 && index < this.count) {
-      let current:Node = this.head;
+      let current:Node<T> = this.head;
 
       // 移除第一项
       if(index === 0) {
@@ -49,7 +49,7 @@ class LinkList {
     return undefined;
   }
 
-  public getElementAt(index: number): Node | undefined {
+  public getElementAt(index: number): Node<T> | undefined {
     if(index >= 0 && index < this.count) {
       let node = this.head;
       for(let i = 0;i < index && node != null; i++) {
@@ -61,7 +61,7 @@ class LinkList {
     return undefined;
   }
 
-  public insert(element: any, index: number): boolean {
+  public insert(element: T, index: number): boolean {
     if(index >= 0 && index < this.count) {
       const node = new Node(element);
       if(index === 0) {
@@ -84,7 +84,7 @@ class LinkList {
     return false;
   }
 
-  public indexOf(element: any): number {
+  public indexOf(element: T): number {
     let current = this.head;
     for(let i = 0; i < this.count && current != null; i++) {
       if(this.equalsFn(element, current.element)) {
@@ -96,7 +96,7 @@ class LinkList {
     return -1;
   }
 
-  public remove(element): Node {
+  public remove(element: T): Node<T> {
     const index = this.indexOf(element);
     return this.removeAt(index);
   }
@@ -109,7 +109,7 @@ class LinkList {
     return this.size() === 0;
   }
 
-  public getHead(): Node | null | undefined {
+  public getHead(): Node<T> | null | undefined {
     return this.head;
   }
 

@@ -1,9 +1,9 @@
-class Node {
+class Node<T> {
 
-  element: any;
-  next: undefined | null | Node;
+  element: T;
+  next: undefined | null | Node<T>;
 
-  constructor(element: any) {
+  constructor(element: T) {
     this.element = element;
     this.next = undefined;
   }
