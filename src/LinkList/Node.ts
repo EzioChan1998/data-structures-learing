@@ -1,4 +1,4 @@
-class Node<T> {
+class Node<T = number> {
 
   element: T;
   next: undefined | null | Node<T>;
