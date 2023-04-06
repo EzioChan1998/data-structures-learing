@@ -26,7 +26,7 @@ class BinarySearchTree<T = number> {
     }
   }
 
-  private insertNode(node:TreeNode<T>, key:T) {
+  public insertNode(node:TreeNode<T>, key:T) {
     if(this.compareFn(key, node.key) === Compare.LESS_THAN) {
       if(node.left == null) {
         node.left = new TreeNode(key);
@@ -146,7 +146,7 @@ class BinarySearchTree<T = number> {
     this.root = this.removeNode(this.root, key);
   }
 
-  private removeNode(node: TreeNode<T>, key: T):TreeNode<T> {
+  public removeNode(node: TreeNode<T>, key: T):TreeNode<T> {
     if(node == null) {
       // 如果节点为空了，说明无法在树上找到这个值
       return null;
