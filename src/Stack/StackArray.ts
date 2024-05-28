@@ -1,11 +1,11 @@
-class Stack {
-  private items: any[];
+class Stack<T = number> {
+  private items: T[];
 
   constructor() {
     this.items = [];
   }
 
-  push(element): void {
+  push(element:T): void {
     this.items.push(element);
   }
 
